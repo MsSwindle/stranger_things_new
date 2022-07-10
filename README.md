@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+Stranger things project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Grading "Stranger's Things" Common Requirements account for 30% of your grade, where Application Specific Requirements account for 70%.
 
-## Available Scripts
+For each listed requirement or story you can score as follows:
 
-In the project directory, you can run:
+Common Requirement (Instructor/Eng Stories) Application Specific Requirement (User Stories) 2 Points Student shows mastery of material Student has completely fulfilled story requrement 1 Point Student has partially incorrect understanding of material Student has partially fulfilled story requirement, with some progress 0 Points Student has deep misunderstandings of material Student has not attempted to fulfill the story requirement, or has done so with very little progress Common Requirements (30%) As an instructor I want to see you demonstrate mastery (when appropriate) of:
 
-### `npm start`
+Javascript Basics variable declaration (correct use of let and const) loop usage (map, forEach, for or while loops) control structures (if, else, else if, ternaries) function declaration function invocation usage of basic data types usage of complex data types, like arrays and objects AJAX Basics usage of HTTP Methods (GET/POST/PATCH/DELETE) handling of asychronous coding for requests usage of try/catch blocks within async functions updating the DOM with results of data requests Front-End Basics including: Well developed React components proper usage of props to share data & functions between components proper usage of event listeners on React components proper usage of state and effects Well implemented routes (React Router) CSS Basics including: proper use of Flex / Grid for creating layouts proper use of cascading and specificity to prevent bleed into unrelated elements Developing a good User Experience (UX) through a clean interface As an engineering manager I want to see code (HTML, CSS, and JS) that:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+is cleanly written has no unused functions or variables has expressive variable, function, and CSS class names is organized into a coherent flow Application Specific Requirements (70%) Your task is to build out a Craigslist-Lite, complete with users, posts, and messages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Routes via React Router (This is a minimum; you could have more than just these routes. These routes may be named as you wish.):
 
-### `npm test`
+/posts /profile (with messages) /login and /register (this could alternatively be displayed in the profile instead of living in its own route) Unauthenticated Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See a list of all posts Sign up for an account with username and password Sign in with correct username/password combination Unauthenticated Users should not be able to:
 
-### `npm run build`
+Create a new post Delete any post Send a message to the author of any post Authenticated Users should be able to:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create a new post Delete a post for which they are the author Send a message to the author of any post for which they are not the author See all messages for any post for which they are the author See all messages they've received in a special view Authenticated Users should not be able to:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Delete posts for which they are not the author Send a message to themselves All users should be able to:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Filter posts with a simple text matcher (no fetch call needed here) Opportunity for EXTRA CREDIT of up to 5% added to your overall score. Authenticated Users would be delighted to be able to:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Edit a post for which they are the author SIMPLE MOCKUP Your app does NOT have to follow this wireframe, but this is one possibility!
