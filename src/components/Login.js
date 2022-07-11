@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { setToken } from '../index';
+
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
+
 
 async function loginUser(username, password) {
 	return fetch(`${APIURL}/users/login`, {
@@ -13,9 +14,9 @@ async function loginUser(username, password) {
 		body: JSON.stringify({
 			user: {
 				username: username,
-				password: password,
-			},
-		}),
+				password: password
+			}
+		})
 	})
 		.then((response) => response.json())
 		.then((result) => {
@@ -25,10 +26,12 @@ async function loginUser(username, password) {
 		.catch(console.error);
 }
 
-function Login({ setToken, username, password}) {
+function Login({ setToken, setUserName, setPassword, username, password}) {
+ 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const token = await loginUser({username, password});
+		const token = await loginUser(username, password);
+        sessionStorage.setItem("token", JSON.stringify(token))
 		setToken(token);
 	};
 	return (
