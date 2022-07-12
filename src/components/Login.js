@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 
 const cohortName = '2204-ftb-et-web-pt';
@@ -26,13 +27,19 @@ async function loginUser(username, password) {
 		.catch(console.error);
 }
 
-function Login({ setToken, setUserName, setPassword, username, password}) {
- 
+function Login({ setToken, username, password, setPassword, setUserName}) {
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+        try{
 		const token = await loginUser(username, password);
         sessionStorage.setItem("token", JSON.stringify(token))
 		setToken(token);
+        alert("message")
+        }catch (error){
+            alert(error.message)
+        }
+
 	};
 	return (
 		<div className="login-container">

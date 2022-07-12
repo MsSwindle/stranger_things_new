@@ -45,7 +45,7 @@ const Update = ({ posts, setPosts, postId, setPostId }) => {
 			setPostId(null);
             setPrice('');
             setLocation('')
-            setWillDeliver(false)
+            setWillDeliver(null)
 		}
 
 		return (
