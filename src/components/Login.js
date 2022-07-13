@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const cohortName = '2204-ftb-et-web-pt';
@@ -22,20 +22,25 @@ async function loginUser(username, password) {
 		.then((response) => response.json())
 		.then((result) => {
 			console.log(result);
-			return result;
+			return result.data.token;
 		})
 		.catch(console.error);
 }
 
 function Login({ setToken, username, password, setPassword, setUserName}) {
-
+    const history = useNavigate();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
         try{
 		const token = await loginUser(username, password);
+        if(token){
         sessionStorage.setItem("token", JSON.stringify(token))
 		setToken(token);
+        history('/HomePage')
         alert("message")
+        }else {
+            alert("Incorrect information")
+        }
         }catch (error){
             alert(error.message)
         }

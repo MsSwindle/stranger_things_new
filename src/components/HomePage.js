@@ -5,11 +5,11 @@ import Update from './Update';
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const HomePage = () => {
+const HomePage = ({token}) => {
 
     const [posts, setPosts] = useState([]);
 	const [postId, setPostId] = useState(null);
-	const [token, setToken] = useState();
+	
 
 	const [username, setUserName] = useState();
 	const [password, setPassword] = useState();
@@ -32,7 +32,6 @@ const HomePage = () => {
             }
 		});
 		const result = await response.json();
-		console.log('result', result);
 		if (result) {
 			const newPosts = posts.filter(
 				(post) => post._id !== postIdToDelete
@@ -52,7 +51,7 @@ const HomePage = () => {
 						setPostId={setPostId}
 					/>
 				) : (
-					<Create posts={posts} setPosts={setPosts} />
+					<Create posts={posts} setPosts={setPosts} token={token} />
 				)}
 				{posts.map((post) => (
 					<div key={post._id}>

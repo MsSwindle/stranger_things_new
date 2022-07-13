@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 
+
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const Create = ({ posts, setPosts }) => {
+
+const Create = ({ token, posts, setPosts }) => {
 	const [title, setTitle] = useState([]);
 	const [description, setDescription] = useState([]);
 	const [price, setPrice] = useState('');
 	const [location, setLocation] = useState ('');
 	const [willDeliver, setWillDeliver] = useState(false);
+	
+	
 
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
+		console.log(token)
 		const response = await fetch(`${APIURL}/posts`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': 'Bearer `${token}`',
+				'Authorization': `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				post: {
@@ -30,9 +35,11 @@ const Create = ({ posts, setPosts }) => {
 		});
 		const result = await response.json();
 		console.log('result', result);
-		setPosts([result, ...posts]);
+		setPosts([result.data.post, ...posts]);
 		setTitle('');
 		setDescription('');
+		setLocation('');
+		setPrice('');
 	};
 
 	return (
@@ -64,11 +71,12 @@ const Create = ({ posts, setPosts }) => {
 					onChange={(ev) => setLocation(ev.target.value)}
 				></input>
 				<input
-					type="text"
-					placeholder="willDeliver"
-					value={title}
+					type="checkbox"
+					id= "willDeliver"
+					name="willDeliver"
+					value={willDeliver}
 					onChange={(ev) => setWillDeliver(ev.target.value)}
-				></input>
+				></input><label className="willDeliver">Will Deliver</label>
 				<button type="submit" className="btn btn-outline-primary">
 					Submit
 				</button>

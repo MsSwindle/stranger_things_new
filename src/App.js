@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import HomePage  from './components/HomePage';
 import UserPage  from './components/UserPage';
@@ -10,36 +10,35 @@ export const cohortName = '2204-ftb-et-web-pt';
 export const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
 function App() {
-	const [posts, setPosts] = useState([]);
-	const [postId, setPostId] = useState(null);
 	const [token, setToken] = useState();
 
 	const [username, setUserName] = useState();
 	const [password, setPassword] = useState();
-    // const [isAuthenticating, setIsAuthenticating] = useState(true);
-    // const [isAuthenticated, userHasAuthenticated] = useState(false);
 
-	// useEffect(() => {
-    //     onLoad();
-    //   }, []);
-      
-    //   async function onLoad() {
-    //     try {
-    //       await Auth.currentSession();
-    //       userHasAuthenticated(true);
-    //     } catch (e) {
-    //       if (e !== "No current user") {
-    //         alert(e);
-    //       }
-    //     }
-      
-    //     setIsAuthenticating(false);
-    //   }
 
-    //   async function handleLogout() {
-    //     await Auth.signOut();
-    //     userHasAuthenticated(false);
-    //   }
+	useEffect(() => {
+        onLoad();
+      }, []);
+      
+      async function onLoad() {
+        try {
+         const storedToken = JSON.parse(sessionStorage.getItem('token'))
+         console.log(storedToken)
+          if(storedToken){
+            setToken(storedToken)
+          }
+        } catch (e) {
+          if (e !== "No current user") {
+            alert(e);
+          }
+        }
+      
+      }
+
+      async function handleLogout() {
+        setToken('');
+        sessionStorage.removeItem("token")
+      }
 
 	return (
 		<Router>
@@ -59,10 +58,11 @@ function App() {
 					<p>This will be the Stranger things page</p>
 					<Routes>
                         <Route path="/" element={<Login/>}></Route> 
-						<Route path="/HomePage" element={<HomePage />}></Route> 
+						<Route path="/HomePage" element={<HomePage token={token}/>}></Route> 
 						<Route path="/UserPage" element={<UserPage />}></Route> 
 						<Route path="/Login" element={
                             <Login
+                            token={token}
                             setToken={setToken}
                             setUserName={setUserName}
                             username={username}
@@ -73,6 +73,7 @@ function App() {
 							path="/Register"
 							element={
                                 <Register
+                                token={token}
                                 setToken={setToken}
                                 setUserName={setUserName}
                                 username={username}
