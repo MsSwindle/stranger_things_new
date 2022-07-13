@@ -6,8 +6,3 @@ const getToken = () => {
 	console.log('userToken', userToken);
 	return userToken?.token;
 };
-// console.log('Token in App.js', token);
-
-// if (!token) {
-// 	console.log("Im hitting else if");
-// }

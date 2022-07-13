@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { setToken } from '../index';
+import { useNavigate } from 'react-router-dom';
 
 
 const cohortName = '2204-ftb-et-web-pt';
@@ -29,7 +29,7 @@ async function registerUser(username, password) {
 }
 
 function Register({ setToken, setUserName, setPassword, username, password}) {
-
+    const history =useNavigate();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const data = await registerUser(
@@ -42,6 +42,7 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
 		console.log('setToken', setToken);
 		localStorage.setItem('token', JSON.stringify(token));
 		setToken(token);
+        history('/HomePage')
         alert("You have registered an account!")
 	};
 

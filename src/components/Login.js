@@ -37,7 +37,7 @@ function Login({ setToken, username, password, setPassword, setUserName}) {
         sessionStorage.setItem("token", JSON.stringify(token))
 		setToken(token);
         history('/HomePage')
-        alert("message")
+        alert("You have logged in!")
         }else {
             alert("Incorrect information")
         }

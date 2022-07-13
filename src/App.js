@@ -46,13 +46,10 @@ function App() {
 				<header className="App-header">
                 <div id="navbar">
                     <nav>  
-                    {/* isAuthenticated ? (
-                        <Link onClick={handleLogout}>Logout</Link>) : (  */}
                     <Link to="/Register">Register</Link>
 					<Link to="/HomePage">Homepage</Link>
 					<Link to ="/Login"> Login</Link>
                     <Link to ="/UserPage">Profile</Link>
-                    {/* ); */}
                     </nav>
 					</div>
 					<p>This will be the Stranger things page</p>
