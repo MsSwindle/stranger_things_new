@@ -4,6 +4,8 @@ import HomePage  from './components/HomePage';
 import UserPage  from './components/UserPage';
 import Login  from './components/Login';
 import Register  from './components/Register';
+import Inbox from './components/Inbox'
+
 
 
 export const cohortName = '2204-ftb-et-web-pt';
@@ -47,16 +49,17 @@ function App() {
                 <div id="navbar">
                     <nav>  
                     <Link to="/Register">Register</Link>
-					<Link to="/HomePage">Homepage</Link>
-					<Link to ="/Login"> Login</Link>
+					          <Link to="/HomePage">Homepage</Link>
+					          <Link to ="/Login"> Login</Link>
                     <Link to ="/UserPage">Profile</Link>
+                    <Link to ="/Inbox">Inbox</Link>
                     </nav>
 					</div>
 					<p>This will be the Stranger things page</p>
 					<Routes>
                         <Route path="/" element={<HomePage/>}></Route> 
 						<Route path="/HomePage" element={<HomePage token={token}/>}></Route> 
-						<Route path="/UserPage" element={<UserPage />}></Route> 
+						<Route path="/UserPage" element={<UserPage token={token}/>}></Route> 
 						<Route path="/Login" element={
                             <Login
                             token={token}
@@ -79,6 +82,7 @@ function App() {
 								/>
 							}
                             ></Route>
+            <Route path="/Inbox" element={<Inbox/>}></Route> 
 					</Routes>
 				</header>
 			</div>

@@ -6,6 +6,7 @@ const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 const Inbox = () => {
 
     return (
+
         <h1> Inbox </h1>
     )
 }
