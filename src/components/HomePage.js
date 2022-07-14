@@ -11,9 +11,6 @@ const HomePage = ({token}) => {
 	const [postId, setPostId] = useState(null);
 	
 
-	const [username, setUserName] = useState();
-	const [password, setPassword] = useState();
-
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const response = await fetch(`${APIURL}/posts`);
@@ -23,36 +20,10 @@ const HomePage = ({token}) => {
 		fetchPosts();
 	}, []);
 
-    const handleDelete = async (postIdToDelete) => {
-		console.log('postIdToDelete', postIdToDelete);
-		const response = await fetch(`${APIURL}/posts/${postIdToDelete}`, {
-			method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-		});
-		const result = await response.json();
-		if (result) {
-			const newPosts = posts.filter(
-				(post) => post._id !== postIdToDelete
-			);
-			setPosts(newPosts);
-		}
-	};
 	return (
         <div>
              <h2>Homepage</h2>
     <h1 className="Post"> Posts </h1>
-				{postId ? (
-					<Update
-						posts={posts}
-						setPosts={setPosts}
-						postId={postId}
-						setPostId={setPostId}
-					/>
-				) : (
-					<Create posts={posts} setPosts={setPosts} token={token} />
-				)}
 				{posts.map((post) => (
 					<div key={post._id}>
 						<h3>{post.title}</h3>
@@ -60,20 +31,6 @@ const HomePage = ({token}) => {
                         <div>{post.location}</div>
                         <div>{post.price}</div>
                         <div>{post.willDeliver}</div>
-						<button
-							type="button"
-							className="btn btn-outline-primary"
-							onClick={() => setPostId(post._id)}
-						>
-							Edit
-						</button>
-						<button
-							type="button"
-							className="btn btn-outline-danger"
-							onClick={() => handleDelete(post._id)}
-						>
-							Delete
-						</button>
 					</div>
 				))}
 

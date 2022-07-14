@@ -42,7 +42,7 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
 		console.log('setToken', setToken);
 		localStorage.setItem('token', JSON.stringify(token));
 		setToken(token);
-        history('/HomePage')
+        history('/UserPage')
         alert("You have registered an account!")
 	};
 

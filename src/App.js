@@ -54,7 +54,7 @@ function App() {
 					</div>
 					<p>This will be the Stranger things page</p>
 					<Routes>
-                        <Route path="/" element={<Login/>}></Route> 
+                        <Route path="/" element={<HomePage/>}></Route> 
 						<Route path="/HomePage" element={<HomePage token={token}/>}></Route> 
 						<Route path="/UserPage" element={<UserPage />}></Route> 
 						<Route path="/Login" element={
