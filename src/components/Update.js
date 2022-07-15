@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const Update = ({ posts, setPosts, postId, setPostId }) => {
+const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 	const [title, setTitle] = useState([]);
 	const [description, setDescription] = useState([]);
 	const [price, setPrice] = useState('');
@@ -18,6 +18,7 @@ const Update = ({ posts, setPosts, postId, setPostId }) => {
 			method: 'Patch',
 			headers: {
 				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				post: {
@@ -82,8 +83,8 @@ const Update = ({ posts, setPosts, postId, setPostId }) => {
 					value={title}
 					onChange={(ev) => setWillDeliver(ev.target.value)}
 				></input>
-					<button type="submit" className="btn btn-outline-primary">
-						Submit
+					<button type="submit" className="btnEdit">
+						Edit
 					</button>
 				</form>
 			</div>

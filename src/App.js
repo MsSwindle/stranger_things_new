@@ -59,7 +59,6 @@ function App() {
 					<Routes>
                         <Route path="/" element={<HomePage/>}></Route> 
 						<Route path="/HomePage" element={<HomePage token={token}/>}></Route> 
-						<Route path="/UserPage" element={<UserPage token={token}/>}></Route> 
 						<Route path="/Login" element={
                             <Login
                             token={token}
@@ -81,8 +80,9 @@ function App() {
                                 setPassword={setPassword}
 								/>
 							}
-                            ></Route>
-            <Route path="/Inbox" element={<Inbox/>}></Route> 
+                            ></Route>          
+            <Route path="/UserPage" element={<UserPage token={token} unsername={username}/>}></Route>                 
+            <Route path="/Inbox" element={<Inbox token={token}/>}></Route> 
 					</Routes>
 				</header>
 			</div>
