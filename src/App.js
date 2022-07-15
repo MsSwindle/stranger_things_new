@@ -51,8 +51,11 @@ function App() {
                     <Link to="/Register">Register</Link>
 					          <Link to="/HomePage">Homepage</Link>
 					          <Link to ="/Login"> Login</Link>
+                    {token ? (<>
                     <Link to ="/UserPage">Profile</Link>
                     <Link to ="/Inbox">Inbox</Link>
+                    </>
+                    ) : (<p>Please log in</p>)}
                     </nav>
 					</div>
 					<p>This will be the Stranger things page</p>
@@ -80,9 +83,9 @@ function App() {
                                 setPassword={setPassword}
 								/>
 							}
-                            ></Route>          
+                            ></Route>    
             <Route path="/UserPage" element={<UserPage token={token} unsername={username}/>}></Route>                 
-            <Route path="/Inbox" element={<Inbox token={token}/>}></Route> 
+            <Route path="/Inbox" element={<Inbox token={token}/>}></Route>                   
 					</Routes>
 				</header>
 			</div>
