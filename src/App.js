@@ -5,6 +5,7 @@ import UserPage  from './components/UserPage';
 import Login  from './components/Login';
 import Register  from './components/Register';
 import Inbox from './components/Inbox'
+import Logout from './components/Logout';
 
 
 
@@ -25,7 +26,6 @@ function App() {
       async function onLoad() {
         try {
          const storedToken = JSON.parse(sessionStorage.getItem('token'))
-         console.log(storedToken)
           if(storedToken){
             setToken(storedToken)
           }
@@ -37,10 +37,6 @@ function App() {
       
       }
 
-      async function handleLogout() {
-        setToken('');
-        sessionStorage.removeItem("token")
-      }
 
 	return (
 		<Router>
@@ -54,6 +50,7 @@ function App() {
                     {token ? (<>
                     <Link to ="/UserPage">Profile</Link>
                     <Link to ="/Inbox">Inbox</Link>
+                    <Link to ="/Logout">Logout</Link>
                     </>
                     ) : (<p>Please log in</p>)}
                     </nav>
@@ -84,8 +81,9 @@ function App() {
 								/>
 							}
                             ></Route>    
-            <Route path="/UserPage" element={<UserPage token={token} unsername={username}/>}></Route>                 
-            <Route path="/Inbox" element={<Inbox token={token}/>}></Route>                   
+            <Route path="/UserPage" element={<UserPage token={token} username={username}/>}></Route>                 
+            <Route path="/Inbox" element={<Inbox token={token}/>}></Route> 
+            <Route path="/Logout" element={<Logout token={token} setToken={setToken}/>}></Route>                  
 					</Routes>
 				</header>
 			</div>
