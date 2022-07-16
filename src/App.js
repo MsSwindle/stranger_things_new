@@ -51,8 +51,7 @@ function App() {
 									<Link to="/Inbox">Inbox</Link>
 									<Link to="/Logout">Logout</Link>
 								</>
-							) : (
-								<p>Please log in</p>)
+							) 
               }
 						</nav>
 					</div>

@@ -32,7 +32,7 @@ const HomePage = ({token}) => {
                         <div>{post.price}</div>
                         <div>{post.willDeliver}</div>
 						{token ? (
-					<Msg />
+					<Msg token ={token} postId={post._id} />
 				) : ("Login to Message poster.")}
 					</div>
 				))}

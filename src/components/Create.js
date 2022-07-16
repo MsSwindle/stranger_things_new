@@ -29,7 +29,7 @@ const Create = ({ token, posts, setPosts }) => {
 					description,
 					price,
 					location,
-					willDeliver,
+					willDeliver
 				},
 			}),
 		});
@@ -77,7 +77,7 @@ const Create = ({ token, posts, setPosts }) => {
 					value={willDeliver}
 					onChange={(ev) => setWillDeliver(ev.target.value)}
 				></input><label className="willDeliver">Will Deliver</label>
-				<button type="submit" className="btn btn-outline-primary">
+				<button type="submit" className="btnPost">
 					Submit
 				</button>
 			</form>

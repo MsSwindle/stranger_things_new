@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const Msg = ({token, posts, postId}) => {
+const Msg = ({token, postId}) => {
     const [content, setContent] = useState('');
     const [message, setMessage] = useState([]);
 
@@ -14,6 +14,7 @@ const Msg = ({token, posts, postId}) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
                 message: {
@@ -21,25 +22,24 @@ const Msg = ({token, posts, postId}) => {
                 }
             })
         })
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result);
-                setMessage ([result.data.message,...message]);
-            })
-            .catch(console.error);
+            const result = await response.json();
+		    console.log('result', result);
+            setMessage ([result.data.message,...message]);
+            setContent('')
+            
     }
 
     return (
         <div>
-            <button
-                type ="button"
-                className='btnMsg'>Message </button>
             <form onSubmit={handleSubmit}>
+            <button
+                type ="submit"
+                className='btnMsg'>Message </button>
 				<input
 					type="text"
 					placeholder="Message"
-					value={message}
-					onChange={(ev) => setMessage(ev.target.value)}
+					value={content}
+					onChange={(ev) => setContent(ev.target.value)}
 				></input>
             </form>
         </div>
