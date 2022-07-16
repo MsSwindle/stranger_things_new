@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Create from './Create';
 import Update from './Update';
 
@@ -6,10 +7,10 @@ const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
 const UserPage = ({token, username}) => {
-
+	const history =useNavigate();
     const [posts, setPosts] = useState([]);
 	const [postId, setPostId] = useState(null);
-	// const sessionToken = sessionStorage.getItem("token")
+	
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -53,19 +54,21 @@ const UserPage = ({token, username}) => {
 
 	return (
         <div>
+			<header>
              <h2>Profile</h2>
-    <h1 className="Post"> Posts </h1>
-				{postId ? (
+			</header>
+				{postId ? 
 					<Update
 						posts={posts}
 						setPosts={setPosts}
 						postId={postId}
 						setPostId={setPostId}
 						token={token}
-					/>
-				) : (
+						undername ={username}
+						/>
+				 : 
 					<Create posts={posts} setPosts={setPosts} token={token} />
-				)}
+				}
 				{posts.map((post) => (
 					<div key={post._id}>
 						<h3>{post.title}</h3>
