@@ -12,6 +12,7 @@ const Logout = ({ token, setToken }) => {
 		<div className="Logout">
 			<h1>Are you sure you want to log out?</h1>
 			<button onClick={handleLogout}>Log out</button>
+            <button onClick={() => history(-1)}>Go Back</button>
 		</div>
 	);
 };

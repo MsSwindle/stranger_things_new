@@ -40,7 +40,7 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
 		console.log('data', data);
 		console.log('token', token);
 		console.log('setToken', setToken);
-		localStorage.setItem('token', JSON.stringify(token));
+		sessionStorage.setItem('token', JSON.stringify(token));
 		setToken(token);
         history('/UserPage')
         alert("You have registered an account!")

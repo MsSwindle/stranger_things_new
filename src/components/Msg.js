@@ -31,6 +31,9 @@ const Msg = ({token, posts, postId}) => {
 
     return (
         <div>
+            <button
+                type ="button"
+                className='btnMsg'>Message </button>
             <form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -38,9 +41,6 @@ const Msg = ({token, posts, postId}) => {
 					value={message}
 					onChange={(ev) => setMessage(ev.target.value)}
 				></input>
-            <button
-                type ="button"
-                className='btnMsg'>Message </button>
             </form>
         </div>
     )
