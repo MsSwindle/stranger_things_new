@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import UserPage from './components/UserPage';
 import Login from './components/Login';
@@ -8,6 +8,7 @@ import Inbox from './components/Inbox';
 import Logout from './components/Logout';
 import Create from './components/Create';
 import Update from './components/Update';
+import NavBar from './components/NavBar';
 
 export const cohortName = '2204-ftb-et-web-pt';
 export const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -39,27 +40,7 @@ function App() {
 
 	return (
 		<Router>
-			<div className="App">
-				<header className="App-header">
-					<div id="navbar">
-						<nav>
-							<Link to="/HomePage">Homepage</Link>
-							{!token ? (
-								<>
-									<Link to="/Register">Register</Link>
-									<Link to="/Login"> Login</Link>
-								</>
-							) : (
-								<>
-									<Link to="/UserPage">Profile</Link>
-									<Link to="/Inbox">Inbox</Link>
-									<Link to="/Logout">Logout</Link>
-									<Link to="/Create">Create A Post</Link>
-								</>
-							) 
-              }
-						</nav>
-					</div>
+			<NavBar token={token} username={username}/>
 					<Routes>
 						<Route path="/" element={<HomePage />}></Route>
 						<Route
@@ -124,8 +105,6 @@ function App() {
 							}
 						></Route>
 					</Routes>
-				</header>
-			</div>
 		</Router>
 	);
 }

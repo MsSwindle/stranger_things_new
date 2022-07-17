@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import react from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import TextField from '@mui/material/TextField';
+import { Container } from '@mui/system';
+import { CssBaseline, Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -47,28 +51,47 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
 	};
 
 	return (
-		<div className="register-container">
-			<form onSubmit={handleSubmit}>
-				<h1>Please Register</h1>
-				<label>
-					<p>Username</p>
-					<input
-						type="text"
-						onChange={(e) => setUserName(e.target.value)}
-					/>
-				</label>
-				<label>
-					<p>Password</p>
-					<input
-						type="password"
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
-				<div>
-					<button type="submit">Submit</button>
-				</div>
-			</form>
-		</div>
+		<Container component='main' maxWidth='xs'>
+			<CssBaseline />
+         <Box
+            sx={{
+               marginTop: 8,
+               display: 'flex',
+               flexDirection: 'column',
+               alignItems: 'center',
+            }}>
+			<Typography component='h1' variant='h4'>
+               Please Register Here.
+            </Typography>
+			<Box component='form' onSubmit={handleSubmit}>
+				<TextField
+					margin='normal'
+					required
+					fullWidth
+					id='outlined-required'
+					label='Enter Username'
+					value={username}
+					onChange={(e) => setUserName(e.target.value)}>
+					</TextField>
+				<TextField
+                  margin='normal'
+                  required
+                  fullWidth
+                  id='outlined-required'
+                  label='Password'
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}></TextField>
+				  <Button
+                  type='submit'
+                  fullWidth
+                  variant='contained'
+                  sx={{ mt: 3, mb: 2 }}>
+                  Register
+               </Button>
+			</Box>
+			</Box>
+		</Container>
 	);
 }
 

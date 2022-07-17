@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { Container } from '@mui/system';
+import { CssBaseline, Typography } from '@mui/material';
 
 
 
@@ -48,28 +53,47 @@ function Login({ setToken, username, password, setPassword, setUserName}) {
 
 	};
 	return (
-		<div className="login-container">
-			<form onSubmit={handleSubmit}>
-				<h1>Please Log In</h1>
-				<label>
-					<p>Username</p>
-					<input
-						type="text"
-						onChange={(e) => setUserName(e.target.value)}
-					/>
-				</label>
-				<label>
-					<p>Password</p>
-					<input
-						type="password"
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
-				<div>
-					<button type="submit">Submit</button>
-				</div>
-			</form>
-		</div>
+		<Container component='main' maxWidth='xs'>
+         <CssBaseline />
+         <Box
+            sx={{
+               marginTop: 8,
+               display: 'flex',
+               flexDirection: 'column',
+               alignItems: 'center',
+            }}>
+			<Typography component='h1' variant='h4'>
+               Please Login
+            </Typography>
+			<Box component='form' onSubmit={handleSubmit}>
+				<TextField
+					margin='normal'
+					required
+					fullWidth
+					id='outlined'
+					label='Enter Username'
+					value={username}
+					onChange={(e) => setUserName(e.target.value)}>
+				</TextField>
+				<TextField
+                  margin='normal'
+                  required
+                  fullWidth
+                  id='outlined-required'
+                  label='Password'
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}></TextField>
+				<Button
+                  type='submit'
+                  fullWidth
+                  variant='contained'
+                  sx={{ mt: 3, mb: 2 }}>
+                  Login
+               </Button>
+			</Box>
+			</Box>
+		</Container>
 	);
 }
 

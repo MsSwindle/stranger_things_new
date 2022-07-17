@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
@@ -35,15 +36,15 @@ const Msg = ({ token, postId }) => {
 	return (
 		<div>
 					<form onSubmit={handleSubmit}>
-						<button type="submit" className="btnMsg">
-							Message{' '}
-						</button>
 						<input
 							type="text"
 							placeholder="Message"
 							value={content}
 							onChange={(e) => setContent(e.target.value)}
 						></input>
+						<button type="submit" className="btnMsg">
+							Message{' '}
+						</button>
 					</form>
 		</div>
 	);
