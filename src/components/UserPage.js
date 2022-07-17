@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import Create from './Create';
-import Update from './Update';
+// import Create from './Create';
+// import Update from './Update';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const UserPage = ({token, username}) => {
+const UserPage = ({token, username, postId, setPostId}) => {
 	const history =useNavigate();
     const [posts, setPosts] = useState([]);
-	const [postId, setPostId] = useState(null);
 	
 
 	useEffect(() => {
@@ -52,23 +51,19 @@ const UserPage = ({token, username}) => {
 		}
 	};
 
+	const handleClick = async (post) => {
+		setPostId(post._id);
+		history('/Update');
+        
+	}
+
+
+
 	return (
         <div>
 			<header>
-             <h2>Profile</h2>
-			</header>
-				{postId ? 
-					<Update
-						posts={posts}
-						setPosts={setPosts}
-						postId={postId}
-						setPostId={setPostId}
-						token={token}
-						undername ={username}
-						/>
-				 : 
-					<Create posts={posts} setPosts={setPosts} token={token} />
-				}
+             <h2>{username}'s Profile</h2>
+			</header> 
 				{posts.map((post) => (
 					<div key={post._id}>
 						<h3>{post.title}</h3>
@@ -76,12 +71,11 @@ const UserPage = ({token, username}) => {
                         <div>{post.location}</div>
                         <div>{post.price}</div>
                         <div>{post.willDeliver}</div>
-
 						<button
 							type="button"
 							className="btnEdit"
-							onClick={() => setPostId(post._id)}
-						>
+							onClick={handleClick}
+							>
 							Edit
 						</button>
 						<button

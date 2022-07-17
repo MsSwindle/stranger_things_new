@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -10,8 +10,7 @@ const Create = ({ token, posts, setPosts }) => {
 	const [description, setDescription] = useState([]);
 	const [price, setPrice] = useState('');
 	const [location, setLocation] = useState ('');
-	const [willDeliver, setWillDeliver] = useState(false);
-	
+	const history =useNavigate();
 	
 
 	const handleSubmit = async (ev) => {
@@ -28,14 +27,14 @@ const Create = ({ token, posts, setPosts }) => {
 					title,
 					description,
 					price,
-					location,
-					willDeliver
+					location
 				},
 			}),
 		});
 		const result = await response.json();
 		console.log('result', result);
 		setPosts([result.data.post, ...posts]);
+		history('/UserPage')
 		setTitle('');
 		setDescription('');
 		setLocation('');
@@ -70,13 +69,6 @@ const Create = ({ token, posts, setPosts }) => {
 					value={location}
 					onChange={(ev) => setLocation(ev.target.value)}
 				></input>
-				<input
-					type="checkbox"
-					id= "willDeliver"
-					name="willDeliver"
-					value={willDeliver}
-					onChange={(ev) => setWillDeliver(ev.target.value)}
-				></input><label className="willDeliver">Will Deliver</label>
 				<button type="submit" className="btnPost">
 					Submit
 				</button>

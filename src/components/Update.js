@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const Update = ({ posts, setPosts, postId, setPostId, token, username }) => {
-	const [title, setTitle] = useState([]);
-	const [description, setDescription] = useState([]);
+const Update = ({ posts, setPosts, postId, setPostId, token }) => {
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
 	const [price, setPrice] = useState('');
 	const [location, setLocation] = useState('');
 	const [willDeliver, setWillDeliver] = useState(false);
+	const history = useNavigate();
 
-	const handleSubmit = async (ev) => {
-		ev.preventDefault();
-		console.log('title, description: ', title, description);
-		console.log('postId: ', postId);
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		console.log(postId);
 		const response = await fetch(`${APIURL}/posts/${postId}`, {
 			method: 'PATCH',
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-type': 'Application/json',
 				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify({
@@ -30,68 +31,66 @@ const Update = ({ posts, setPosts, postId, setPostId, token, username }) => {
 				},
 			}),
 		});
-
 		const result = await response.json();
-		console.log('result: ', result);
 		if (result && result.title) {
 			const newPosts = posts.map((post) => {
-				if (post._id === postId) {
+				if (posts._id === postId) {
 					return result;
 				} else {
 					return post;
 				}
 			});
 			setPosts(newPosts);
+			history('/UserPage');
 			setTitle('');
 			setDescription('');
 			setPostId(null);
 			setPrice('');
 			setLocation('');
-			setWillDeliver(null);
+			setWillDeliver(false);
 		}
 	};
 
 	return (
-		<div>
+		<>
 			<h3>Update a Post</h3>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
-					placeholder="title"
+					placeholder="Title"
 					value={title}
-					onChange={(ev) => setTitle(ev.target.value)}
+					onChange={(event) => setTitle(event.target.value)}
 				></input>
 				<input
 					type="text"
-					placeholder="description"
+					placeholder="Description"
 					value={description}
-					onChange={(ev) => setDescription(ev.target.value)}
+					onChange={(event) => setDescription(event.target.value)}
 				></input>
 				<input
 					type="text"
 					placeholder="Price"
 					value={price}
-					onChange={(ev) => setPrice(ev.target.value)}
+					onChange={(event) => setPrice(event.target.value)}
 				></input>
 				<input
 					type="text"
-					placeholder="location"
+					placeholder="Location"
 					value={location}
-					onChange={(ev) => setLocation(ev.target.value)}
+					onChange={(event) => setLocation(event.target.value)}
 				></input>
 				<input
 					type="checkbox"
 					id="willDeliver"
-					name="willDeliver"
 					value={willDeliver}
-					onChange={(ev) => setWillDeliver(ev.target.value)}
+					onChange={(event) => setWillDeliver(event.target.value)}
 				></input>
-				<label className="willDeliver">Will Deliver</label>
-				<button type="submit" className="btnEdit">
+				<label className="willDeliver">Will deliver?</label>
+				<button type="submit" className="btn-outline-primary">
 					Submit
 				</button>
 			</form>
-		</div>
+		</>
 	);
 };
 

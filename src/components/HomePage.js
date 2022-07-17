@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Msg from './Msg';
+import Search from './Search';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -22,6 +23,7 @@ const HomePage = ({token}) => {
 	return (
         <div>
              <h2>Homepage</h2>
+			 < Search token={token} posts={posts} setPost={setPosts}/>
     <h1 className="Post"> Posts </h1>	
 
 				{posts.map((post) => (

@@ -1,54 +1,42 @@
-import react from 'react';
+import React, {useState} from 'react';
 
-const cohortName = '2204-ftb-et-web-pt';
-const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
+// const cohortName = '2204-ftb-et-web-pt';
+// const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const Search = (posts, setPosts) => {
+const Search = ({token, posts, setPosts}) => {
 
-const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
+    // const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
+    // const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
-function postMatches(post, text) posts.filter(
-  post => {
-    return(
-        post.text.includes(searchTerm) 
-    )
-  }
-)
-}
+        // function postMatches(post, text) {
+        //     if(post.includes(searchTerm)){
+        //     return post
+        //     }
+        //     else{
+        //         return ("No post matching " + searchTerm)
+        //     }
+        // }
 
-
-const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
-const postsToDisplay = searchTerm.length ? filteredPosts : posts;
-
-// then, in our jsx below... map over postsToDisplay instead of posts
-
-const handleSubmit = e => {
-    setSearchTerm(e.target.value);
-}
+    // const handleSubmit = async (e) => {
+    //     setSearchTerm(e.target.value);
+    // }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='SearchContainer'>
+            <form>
 				<input
 					type="text"
 					placeholder="search"
 					value={searchTerm}
-					onChange={handleSubmit}
+					onChange={(e) => setSearchTerm(e.target.value)}
 				></input>
-				<button type="submit" className="btn btn-outline-primary">
+				<button type="submit" className="btnSubmit">
 					Submit
 				</button>
 			</form>
-            {postsToDisplay.map((post) => (
-            <div key={post._id}>
-            <h3>{post.title}</h3>
-            <div>{post.description}</div>
-            <div>{post.location}</div>
-            <div>{post.price}</div>
-            <div>{post.willDeliver}</div>
-            ))}
         </div>
     )
-}
+};
 
 export default Search;
