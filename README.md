@@ -1,3 +1,5 @@
+my finished deployed site. https://eloquent-biscotti-0218ba.netlify.app
+
 Stranger things project
 
 Grading "Stranger's Things" Common Requirements account for 30% of your grade, where Application Specific Requirements account for 70%.
