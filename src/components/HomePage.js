@@ -11,20 +11,27 @@ import Grid from '@mui/material/Grid';
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
-const HomePage = ({token}) => {
+const HomePage = ({token, posts, setPosts,setPostsToDisplay}) => {
 
-    const [posts, setPosts] = useState([]);
 	const [postId, setPostId] = useState(null);
 	
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const response = await fetch(`${APIURL}/posts`);
+			const response = await fetch(`${APIURL}/posts`,{
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`,
+				},
+			}
+			);
+
 			const result = await response.json();
 			setPosts(result.data.posts);
+			setPostsToDisplay(result.data.posts);
 		};
 		fetchPosts();
-	}, []);
+	}, [token]);
 
 	return (
 		<>
@@ -58,7 +65,7 @@ const HomePage = ({token}) => {
                         </Typography>
                      </CardContent>
 						<CardActions>
-							{token ? (
+							{post.isAuthor ? null : token ? (
 								<Msg token ={token} postId={post._id} />
 								) : ("Login to Message poster.")}
 						</CardActions>

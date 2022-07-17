@@ -18,7 +18,7 @@ const Msg = ({ token, postId }) => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
+				'Authorization': `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				message: {
@@ -35,7 +35,7 @@ const Msg = ({ token, postId }) => {
 
 	return (
 		<div>
-			{postId === postId._id ? (
+			
 				<form onSubmit={handleSubmit}>
 					<input
 						type="text"
@@ -47,7 +47,7 @@ const Msg = ({ token, postId }) => {
 						Message{' '}
 					</button>
 				</form>
-			) :null}	
+		
 		</div>
 	);
 };

@@ -72,6 +72,7 @@ function Login({ setToken, username, password, setPassword, setUserName}) {
 					fullWidth
 					id='outlined'
 					label='Enter Username'
+					type='text'
 					value={username}
 					onChange={(e) => setUserName(e.target.value)}>
 				</TextField>
@@ -81,7 +82,7 @@ function Login({ setToken, username, password, setPassword, setUserName}) {
                   fullWidth
                   id='outlined-required'
                   label='Password'
-                  type='password'
+                  type='text'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}></TextField>
 				<Button

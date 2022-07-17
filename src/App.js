@@ -20,6 +20,7 @@ function App() {
 	const [password, setPassword] = useState();
 	const [posts, setPosts] = useState([]);
 	const [postId, setPostId] = useState(null);
+	const [postsToDisplay, setPostsToDisplay] = useState([]);
 
 	useEffect(() => {
 		onLoad();
@@ -40,12 +41,12 @@ function App() {
 
 	return (
 		<Router>
-			<NavBar token={token} username={username}/>
+			<NavBar token={token} username={username} posts={posts} setPostsToDisplay={setPostsToDisplay}/>
 					<Routes>
-						<Route path="/" element={<HomePage />}></Route>
+						<Route path="/" element={<HomePage posts={postsToDisplay} setPosts={setPosts} setPostsToDisplay={setPostsToDisplay}/>}></Route>
 						<Route
 							path="/HomePage"
-							element={<HomePage token={token} />}
+							element={<HomePage token={token} posts={postsToDisplay} setPosts={setPosts} setPostsToDisplay={setPostsToDisplay}/>}
 						></Route>
 						<Route
 							path="/Login"

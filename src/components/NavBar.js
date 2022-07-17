@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Search from './Search';
 import Link from '@mui/joy/Link';
 
-const NavBar = ({ token, posts, setPosts, username }) => {
+const NavBar = ({ token, posts, setPosts, username, setPostsToDisplay }) => {
 	return (
 			<Box sx={{ flexGrow: 1}}>
 				<AppBar position="static"
@@ -20,12 +20,13 @@ const NavBar = ({ token, posts, setPosts, username }) => {
 							component="div"
 							sx={{ flexGrow: 1
                             }}>
-                            Stranger Things
+                            Stranger's Things
 						</Typography>
                         <Search
                             token={token}
                             posts={posts}
                             setPost={setPosts}
+                            setPostsToDisplay={setPostsToDisplay}
                         />
 						<Button href="/Homepage" color="inherit">
 							Home
