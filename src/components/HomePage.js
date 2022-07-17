@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 
 
+
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
@@ -40,6 +41,7 @@ const HomePage = ({token}) => {
 				variant='outlined'
 				sx={{
 				   display: 'flex',
+				   margin: '10px',
 				   backgroundColor: '#80cbc4',
 				   boxShadow: '5px 5px grey',
 				}}>
@@ -59,7 +61,7 @@ const HomePage = ({token}) => {
 							{token ? (
 								<Msg token ={token} postId={post._id} />
 								) : ("Login to Message poster.")}
-								</CardActions>
+						</CardActions>
 					
 					</Card>
 					</Grid>

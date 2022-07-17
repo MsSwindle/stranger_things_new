@@ -88,6 +88,7 @@ function Login({ setToken, username, password, setPassword, setUserName}) {
                   type='submit'
                   fullWidth
                   variant='contained'
+				  color='inherit'
                   sx={{ mt: 3, mb: 2 }}>
                   Login
                </Button>

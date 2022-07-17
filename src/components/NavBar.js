@@ -5,14 +5,15 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Search from './Search';
+import Link from '@mui/joy/Link';
 
 const NavBar = ({ token, posts, setPosts, username }) => {
 	return (
-		<>
 			<Box sx={{ flexGrow: 1}}>
 				<AppBar position="static"
                 sx={{ backgroundColor: '#009688',
-                    boxShadow: '5px 5px grey', }}>>
+                    margin: '1.5px',
+                    boxShadow: '5px 5px grey', }}>
 					<Toolbar>
 						<Typography
 							variant="h6"
@@ -21,6 +22,11 @@ const NavBar = ({ token, posts, setPosts, username }) => {
                             }}>
                             Stranger Things
 						</Typography>
+                        <Search
+                            token={token}
+                            posts={posts}
+                            setPost={setPosts}
+                        />
 						<Button href="/Homepage" color="inherit">
 							Home
 						</Button>
@@ -35,12 +41,7 @@ const NavBar = ({ token, posts, setPosts, username }) => {
 							</>
 						) : (
 							<>
-								<Search
-									token={token}
-									posts={posts}
-									setPost={setPosts}
-								/>
-								<Button href="/Userpage" color="inherit">
+								<Button href="/UserPage" color="inherit">
 									Profile
 								</Button>
 								<Button href="/Inbox" color="inherit">
@@ -57,7 +58,6 @@ const NavBar = ({ token, posts, setPosts, username }) => {
 					</Toolbar>
 				</AppBar>
 			</Box>
-		</>
 	);
 };
 

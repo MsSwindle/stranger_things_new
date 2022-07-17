@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { Container } from '@mui/system';
+import { CssBaseline, Typography } from '@mui/material';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -52,45 +57,66 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 	};
 
 	return (
-		<>
-			<h3>Update a Post</h3>
-			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					placeholder="Title"
-					value={title}
-					onChange={(event) => setTitle(event.target.value)}
-				></input>
-				<input
-					type="text"
-					placeholder="Description"
-					value={description}
-					onChange={(event) => setDescription(event.target.value)}
-				></input>
-				<input
-					type="text"
-					placeholder="Price"
-					value={price}
-					onChange={(event) => setPrice(event.target.value)}
-				></input>
-				<input
-					type="text"
-					placeholder="Location"
-					value={location}
-					onChange={(event) => setLocation(event.target.value)}
-				></input>
-				<input
-					type="checkbox"
-					id="willDeliver"
-					value={willDeliver}
-					onChange={(event) => setWillDeliver(event.target.value)}
-				></input>
-				<label className="willDeliver">Will deliver?</label>
-				<button type="submit" className="btn-outline-primary">
-					Submit
-				</button>
-			</form>
-		</>
+		<Container component="main" maxWidth="xs">
+			<CssBaseline />
+			<Box
+				sx={{
+					marginTop: 8,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+				}}
+			>
+				<Typography component="h1" variant="h4">
+					Update Your Post
+				</Typography>
+				<Box component="form" onSubmit={handleSubmit}>
+					<TextField
+						margin="normal"
+						type="text"
+						fullWidth
+						id="outlined"
+						label="Title"
+						value={title}
+						onChange={(ev) => setTitle(ev.target.value)}
+					></TextField>
+					<TextField
+						margin="normal"
+						type="text"
+						fullWidth
+						id="outlined"
+						label="Description"
+						value={description}
+						onChange={(ev) => setDescription(ev.target.value)}
+					></TextField>
+					<TextField
+						margin="normal"
+						type="text"
+						fullWidth
+						label="Price"
+						value={price}
+						onChange={(ev) => setPrice(ev.target.value)}
+					></TextField>
+					<TextField
+						margin="normal"
+						type="text"
+						fullWidth
+						label="Location"
+						value={location}
+						onChange={(ev) => setLocation(ev.target.value)}
+					></TextField>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="inherit"
+						sx={{ mt: 3, mb: 2 }}
+					>
+						Submit
+					</Button>
+				</Box>
+			</Box>
+		</Container>
 	);
 };
 

@@ -5,6 +5,7 @@ import { CardActions } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 const cohortName = '2204-ftb-et-web-pt';
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
@@ -97,20 +98,20 @@ const UserPage = ({ token, username, postId, setPostId }) => {
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<button
+							<Button
 								type="button"
 								className="btnEdit"
 								onClick={handleClick}
 							>
 								Edit
-							</button>
-							<button
+							</Button>
+							<Button
 								type="button"
 								className="btnDelete"
 								onClick={() => handleDelete(post._id)}
 							>
 								Delete
-							</button>
+							</Button>
 						</CardActions>
 					</Card>
 				</Grid>

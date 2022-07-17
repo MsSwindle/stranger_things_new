@@ -35,17 +35,19 @@ const Msg = ({ token, postId }) => {
 
 	return (
 		<div>
-					<form onSubmit={handleSubmit}>
-						<input
-							type="text"
-							placeholder="Message"
-							value={content}
-							onChange={(e) => setContent(e.target.value)}
-						></input>
-						<button type="submit" className="btnMsg">
-							Message{' '}
-						</button>
-					</form>
+			{postId === postId._id ? (
+				<form onSubmit={handleSubmit}>
+					<input
+						type="text"
+						placeholder="Message"
+						value={content}
+						onChange={(e) => setContent(e.target.value)}
+					></input>
+					<button type="submit" className="btnMsg">
+						Message{' '}
+					</button>
+				</form>
+			) :null}	
 		</div>
 	);
 };
