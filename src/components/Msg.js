@@ -13,7 +13,6 @@ const Msg = ({ token, postId }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(token);
 		const response = await fetch(`${APIURL}/posts/${postId}/messages`, {
 			method: 'POST',
 			headers: {
@@ -27,7 +26,6 @@ const Msg = ({ token, postId }) => {
 			}),
 		});
 		const result = await response.json();
-		console.log('result', result);
 		setMessage([result.data.message, ...message]);
 		setContent('');
 		history('/Inbox');

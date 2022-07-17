@@ -18,7 +18,6 @@ const Create = ({ token, posts, setPosts }) => {
 
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
-		console.log(token);
 		const response = await fetch(`${APIURL}/posts`, {
 			method: 'POST',
 			headers: {
@@ -35,7 +34,6 @@ const Create = ({ token, posts, setPosts }) => {
 			}),
 		});
 		const result = await response.json();
-		console.log('result', result);
 		setPosts([result.data.post, ...posts]);
 		history('/UserPage');
 		setTitle('');

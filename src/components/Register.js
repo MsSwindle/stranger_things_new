@@ -1,4 +1,4 @@
-import react from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { Container } from '@mui/system';
@@ -11,7 +11,6 @@ const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}`;
 
 
 async function registerUser(username, password) {
-    console.log(username)
 	return fetch(`${APIURL}/users/register`, {
 		method: 'POST',
 		headers: {
@@ -26,7 +25,6 @@ async function registerUser(username, password) {
 	})
 		.then((response) => response.json())
 		.then((result) => {
-			console.log(result);
             return result;
 		})
 		.catch(console.error);
@@ -41,9 +39,6 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
 			password
 		);
 		const token = data.data.token;
-		console.log('data', data);
-		console.log('token', token);
-		console.log('setToken', setToken);
 		sessionStorage.setItem('token', JSON.stringify(token));
 		setToken(token);
         history('/UserPage')
@@ -86,6 +81,7 @@ function Register({ setToken, setUserName, setPassword, username, password}) {
                   type='submit'
                   fullWidth
                   variant='contained'
+				  color='inherit'
                   sx={{ mt: 3, mb: 2 }}>
                   Register
                </Button>

@@ -41,12 +41,24 @@ function App() {
 
 	return (
 		<Router>
-			<NavBar token={token} username={username} posts={posts} setPostsToDisplay={setPostsToDisplay}/>
+			<NavBar 
+			token={token} 
+			username={username} 
+			posts={posts} 
+			setPostsToDisplay={setPostsToDisplay} 
+			/>
 					<Routes>
-						<Route path="/" element={<HomePage posts={postsToDisplay} setPosts={setPosts} setPostsToDisplay={setPostsToDisplay}/>}></Route>
+						<Route path="/" element={<HomePage 
+						posts={postsToDisplay} 
+						setPosts={setPosts} 
+						setPostsToDisplay={setPostsToDisplay}/>}></Route>
 						<Route
 							path="/HomePage"
-							element={<HomePage token={token} posts={postsToDisplay} setPosts={setPosts} setPostsToDisplay={setPostsToDisplay}/>}
+							element={<HomePage 
+								token={token} 
+								posts={postsToDisplay} 
+								setPosts={setPosts} 
+								setPostsToDisplay={setPostsToDisplay}/>}
 						></Route>
 						<Route
 							path="/Login"
@@ -77,12 +89,20 @@ function App() {
 						<Route
 							path="/UserPage"
 							element={
-								<UserPage token={token} username={username} postId={postId} setPostId={setPostId} />
+								<UserPage 
+								token={token} 
+								username={username} 
+								postId={postId} 
+								setPostId={setPostId}
+								posts={posts}
+								setPosts={setPosts} />
 							}
 						></Route>
 						<Route
 						path="/Create"
-						element={<Create posts={posts} setPosts={setPosts} token={token} />}
+						element={<Create 
+							posts={posts} 
+							setPosts={setPosts} token={token} />}
 						>
 						</Route>
 						<Route 

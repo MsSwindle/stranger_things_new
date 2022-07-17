@@ -12,7 +12,6 @@ const Inbox = ({ token, posts, username }) => {
 
 	useEffect(() => {
 		const fetchMsg = async () => {
-			console.log(token);
 			const response = await fetch(`${APIURL}/users/me`, {
 				headers: {
 					'Content-Type': 'application/json',
@@ -20,7 +19,6 @@ const Inbox = ({ token, posts, username }) => {
 				},
 			});
 			const result = await response.json();
-			console.log(result);
 			setAllMessage(result.data.messages);
 		};
 		fetchMsg();

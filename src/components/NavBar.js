@@ -4,8 +4,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Search from './Search';
-import Link from '@mui/joy/Link';
 
 const NavBar = ({ token, posts, setPosts, username, setPostsToDisplay }) => {
 	return (
@@ -22,12 +20,6 @@ const NavBar = ({ token, posts, setPosts, username, setPostsToDisplay }) => {
                             }}>
                             Stranger's Things
 						</Typography>
-                        <Search
-                            token={token}
-                            posts={posts}
-                            setPost={setPosts}
-                            setPostsToDisplay={setPostsToDisplay}
-                        />
 						<Button href="/Homepage" color="inherit">
 							Home
 						</Button>

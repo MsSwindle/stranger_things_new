@@ -14,30 +14,29 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 	const [description, setDescription] = useState('');
 	const [price, setPrice] = useState('');
 	const [location, setLocation] = useState('');
-	const [willDeliver, setWillDeliver] = useState(false);
 	const history = useNavigate();
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		console.log(postId);
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(token)
 		const response = await fetch(`${APIURL}/posts/${postId}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-type': 'Application/json',
-				Authorization: `Bearer ${token}`,
-			},
+		   method: 'PATCH',
+		   headers: {
+			  'Content-Type': 'application/json',
+			  Authorization: `Bearer${token}`,
+		   },
 			body: JSON.stringify({
 				post: {
 					title,
 					description,
 					price,
 					location,
-					willDeliver,
 				},
 			}),
 		});
 		const result = await response.json();
-		if (result && result.title) {
+		console.log(result);
+		if (result) {
 			const newPosts = posts.map((post) => {
 				if (posts._id === postId) {
 					return result;
@@ -52,7 +51,6 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 			setPostId(null);
 			setPrice('');
 			setLocation('');
-			setWillDeliver(false);
 		}
 	};
 
@@ -78,7 +76,7 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 						id="outlined"
 						label="Title"
 						value={title}
-						onChange={(ev) => setTitle(ev.target.value)}
+						onChange={(e) => setTitle(e.target.value)}
 					></TextField>
 					<TextField
 						margin="normal"
@@ -87,7 +85,7 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 						id="outlined"
 						label="Description"
 						value={description}
-						onChange={(ev) => setDescription(ev.target.value)}
+						onChange={(e) => setDescription(e.target.value)}
 					></TextField>
 					<TextField
 						margin="normal"
@@ -95,7 +93,7 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 						fullWidth
 						label="Price"
 						value={price}
-						onChange={(ev) => setPrice(ev.target.value)}
+						onChange={(e) => setPrice(e.target.value)}
 					></TextField>
 					<TextField
 						margin="normal"
@@ -103,7 +101,7 @@ const Update = ({ posts, setPosts, postId, setPostId, token }) => {
 						fullWidth
 						label="Location"
 						value={location}
-						onChange={(ev) => setLocation(ev.target.value)}
+						onChange={(e) => setLocation(e.target.value)}
 					></TextField>
 					<Button
 						type="submit"
